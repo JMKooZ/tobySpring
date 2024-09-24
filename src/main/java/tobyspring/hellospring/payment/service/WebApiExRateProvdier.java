@@ -2,7 +2,6 @@ package tobyspring.hellospring.payment.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import tobyspring.hellospring.payment.dao.ExRateDate;
-import tobyspring.hellospring.payment.service.PaymentService;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,8 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Collectors;
 
-public class WebApiExRatePaymentService extends PaymentService {
-    @Override
+public class WebApiExRateProvdier {
     protected BigDecimal getExRate(String currency) throws IOException {
         URL url = new URL("https://open.er-api.com/v6/latest/" + currency);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
