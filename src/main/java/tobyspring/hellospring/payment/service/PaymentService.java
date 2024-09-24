@@ -7,10 +7,10 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 public class PaymentService {
-    private final WebApiExRateProvdier exRateProvdier;
+    private final ExRateProvider exRateProvdier;
 
-    public PaymentService() {
-        this.exRateProvdier = new WebApiExRateProvdier();
+    public PaymentService(ExRateProvider exRateProvdier) {
+        this.exRateProvdier = exRateProvdier;
     }
 
     public Payment prepare(Long orderId, String currency, BigDecimal foreignCurrencyAmount) throws IOException {

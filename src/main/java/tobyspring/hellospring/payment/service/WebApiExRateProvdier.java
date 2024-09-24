@@ -11,8 +11,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.stream.Collectors;
 
-public class WebApiExRateProvdier {
-    protected BigDecimal getExRate(String currency) throws IOException {
+public class WebApiExRateProvdier implements ExRateProvider{
+    @Override
+    public BigDecimal getExRate(String currency) throws IOException {
         URL url = new URL("https://open.er-api.com/v6/latest/" + currency);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
