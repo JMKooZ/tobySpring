@@ -10,7 +10,8 @@ import java.math.BigDecimal;
 
 public class Client {
     public static void main(String[] args) throws IOException {
-        PaymentService paymentService = new PaymentService(new WebApiExRateProvdier());
+        ObjectFactory factory = new ObjectFactory();
+        PaymentService paymentService = factory.paymentService();
         Payment payment = paymentService.prepare(1L, "USD", BigDecimal.valueOf(1304));
         System.out.println("payment = " + payment);
     }
