@@ -1,4 +1,4 @@
-package tobyspring.hellospring.payment;
+package tobyspring.hellospring;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterAll;

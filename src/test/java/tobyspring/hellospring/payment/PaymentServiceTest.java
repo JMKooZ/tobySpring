@@ -1,7 +1,8 @@
-package tobyspring.hellospring.payment.service;
+package tobyspring.hellospring.payment;
 
 import org.junit.jupiter.api.Test;
 import tobyspring.hellospring.payment.dao.Payment;
+import tobyspring.hellospring.payment.service.PaymentService;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -13,15 +14,15 @@ class PaymentServiceTest {
 
     @Test
     void prepare() throws IOException {
-        PaymentService paymentService = new PaymentService(new WebApiExRateProvdier());
+        PaymentService paymentService = new PaymentService(new ExRateProviderStub(BigDecimal.valueOf(500)));
         Payment payment = paymentService.prepare(1L, "USD", BigDecimal.TEN);
 
         // 환율정보 가져온다
-        assertThat(payment.getExRate()).isNotNull();
+        assertThat(payment.getExRate()).isEqualTo(BigDecimal.valueOf(500));
 
         // 원화환산금액 계산
         assertThat(payment.getConvertedAmount())
-                .isEqualTo(payment.getExRate().multiply(payment.getForeignCurrencyAmount()));
+                .isEqualTo(BigDecimal.valueOf(5_000));
 
         // 원화환산금액의 유효시간 계산
         assertThat(payment.getValidUntil()).isBefore(LocalDateTime.now().plusMinutes(30));
