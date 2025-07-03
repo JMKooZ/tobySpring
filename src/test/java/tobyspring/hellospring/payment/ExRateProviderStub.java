@@ -22,7 +22,7 @@ public class ExRateProviderStub implements ExRateProvider {
     }
 
     @Override
-    public BigDecimal getExRate(String currency) {
+    public BigDecimal getExRate(String currency) throws IOException {
 
         return exRate;
     }
