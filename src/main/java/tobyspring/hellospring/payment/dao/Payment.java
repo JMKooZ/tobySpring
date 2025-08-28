@@ -1,9 +1,6 @@
 package tobyspring.hellospring.payment.dao;
 
-import org.springframework.cglib.core.Local;
-
 import java.math.BigDecimal;
-import java.time.Clock;
 import java.time.LocalDateTime;
 
 public class Payment {
@@ -29,18 +26,6 @@ public class Payment {
         this.exRate = exRate;
         this.convertedAmount = convertedAmount;
         this.validUntil = validUntil;
-    }
-
-    //팩토리 메서드 생성
-    public static Payment createdPrepared(Long orderId, String currency, BigDecimal foreignCurrencyAmount, BigDecimal exRate, LocalDateTime now){
-        BigDecimal convertedAmount = foreignCurrencyAmount.multiply(exRate);
-        LocalDateTime validUntil = now.plusMinutes(30);
-
-        return new Payment(orderId, currency, foreignCurrencyAmount, exRate, convertedAmount, validUntil);
-    }
-
-    public boolean isVaild(Clock clock){
-        return LocalDateTime.now(clock).isBefore(this.validUntil);
     }
 
     @Override

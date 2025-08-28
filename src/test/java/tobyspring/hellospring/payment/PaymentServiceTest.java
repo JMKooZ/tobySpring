@@ -24,11 +24,7 @@ class PaymentServiceTest {
     }
 
     @Test
-<<<<<<< HEAD
     void convertedAmount() throws IOException {
-=======
-    void convertedAmount() {
->>>>>>> 0802768762e720a70b0378bf4f07e31b590da938
 
         convertedAmount(BigDecimal.valueOf(100), BigDecimal.valueOf(1_000), this.clock);
         convertedAmount(BigDecimal.valueOf(300), BigDecimal.valueOf(3_000), this.clock);
@@ -41,11 +37,7 @@ class PaymentServiceTest {
     }
 
     @Test
-<<<<<<< HEAD
     void validUntil() throws IOException {
-=======
-    void validUntil() {
->>>>>>> 0802768762e720a70b0378bf4f07e31b590da938
         PaymentService paymentService = new PaymentService(new ExRateProviderStub(BigDecimal.valueOf(1_000)), clock);
 
         Payment payment = paymentService.prepare(1L, "USD", BigDecimal.TEN);
@@ -58,11 +50,7 @@ class PaymentServiceTest {
     }
 
     // 여러 케이스의 입력값을 넣고 하기위해서 테스트케이스를 메서ㅊ드로 분리 시킨다. (우연히 테스트가 성공하는 경우가 있음)
-<<<<<<< HEAD
     private static void convertedAmount(BigDecimal exRate, BigDecimal convertedAmount, Clock clock) throws IOException {
-=======
-    private static void convertedAmount(BigDecimal exRate, BigDecimal convertedAmount, Clock clock) {
->>>>>>> 0802768762e720a70b0378bf4f07e31b590da938
         PaymentService paymentService = new PaymentService(new ExRateProviderStub(exRate), clock);
         Payment payment = paymentService.prepare(1L, "USD", BigDecimal.TEN);
         // bigdecimal 비교는 isEqualByComparingTo 이걸로 하는게 좋다
